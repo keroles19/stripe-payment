@@ -24,12 +24,24 @@ class ProductController extends Controller
         return redirect()->route('product.index')->with('success','added successfully');
     }
 
+    public function showCart() {
 
+        $cart =  session()->has('cart') ?
+            new Cart(session()->get('cart')) :
+            null;
+
+        return view('cart.show', compact('cart'));
+    }
     public function index()
     {
+        if(session('success'))
+            toast(session('success'),'success');
+
         $products = Product::all();
         return view('product.index',compact('products'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.

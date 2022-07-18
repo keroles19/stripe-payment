@@ -18,11 +18,13 @@
                                 <h5 class="card-title">{{ $product->title }}</h5>
                                 <p class="card-text">Sld on thd make up the bulk of the card's content.</p>
                                 <p><strong> $ {{ $product->price }}</strong></p>
-                                @if(!key_exists($product->id,session()->get('cart')->items))
+{{--                                @if(session()->has('cart'))--}}
+{{--                                @if(!key_exists($product->id,session()->get('cart')->items))--}}
                                 <a href="{{route('product.buy',$product->id)}}" class="btn btn-primary"> Buy</a>
-                                @else
-                                    <button class="btn btn-success disabled">Done</button>
-                                @endif
+{{--                                @else--}}
+{{--                                    <button class="btn btn-success disabled">Done</button>--}}
+{{--                                @endif--}}
+{{--                                @endif--}}
                             </div>
                     </div>
 

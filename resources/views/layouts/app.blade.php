@@ -44,7 +44,7 @@
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('cart.show')}}" class="nav-link">
                             <span class="fas fa-shopping-cart">
                                 My Cart ( {{ session()->has('cart') ? count( session()->get('cart')->items ) : '0' }})
                             </span>
@@ -87,10 +87,11 @@
     </nav>
 
     <main class="py-4">
+
         @yield('content')
     </main>
 </div>
-{{--@include('sweetalert::alert')--}}
+@include('sweetalert::alert')
 
 @yield('script')
 </body>

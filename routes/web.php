@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -30,5 +31,13 @@ Route::resource('product',ProductController::class);
 
 Route::prefix('product')->name('product.')->group(function(){
     Route::get('buy/{product}',[ProductController::class,'addToCart'])->name('buy');
+
 });
+Route::get('/shopping_cart', [ProductController::class,'showCart'])->name('cart.show');
+
+Route::controller(checkoutController::class)->middleware('auth')->group(function(){
+    Route::get('/checkout', 'checkout')->name('checkout');
+    Route::post('/charge', 'charge')->name('charge');
+});
+
 
